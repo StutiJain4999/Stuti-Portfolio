@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030303;
+  --foreground: #f8fafc;
+  
+  --color-purple: 270 80% 60%;
+  --color-blue: 210 100% 50%;
+  --color-cyan: 180 100% 50%;
+  --color-bg-dark: 240 10% 2%;
+  --color-card-dark: 240 10% 4%;
+  
+  --glow-purple: 0 0 8px hsla(270, 80%, 60%, 0.2);
+  --glow-blue: 0 0 8px hsla(210, 100%, 50%, 0.2);
+  --glow-cyan: 0 0 8px hsla(180, 100%, 50%, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.15) rgba(3, 3, 3, 1);
+  line-height: 1.7; /* Increased line spacing */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), var(--font-inter), sans-serif;
+}
+
+/* Custom selection */
+::selection {
+  background-color: rgba(6, 182, 212, 0.3);
+  color: #ffffff;
+}
+
+/* Custom Webkit scrollbar for premium look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(10, 10, 12, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(10, 10, 12, 0.65);
+  border-color: rgba(6, 182, 212, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(6, 182, 212, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Neon Glows */
+.text-glow-purple {
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.15);
+}
+.text-glow-blue {
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.15);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.15);
+}
+
+.border-glow-purple:focus-within, .border-glow-purple:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+.border-glow-cyan:focus-within, .border-glow-cyan:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+/* Background Noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.015;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom keyframe animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Utility to hide cursor on desktop when using custom cursor */
+@media (min-width: 1024px) {
+  .custom-cursor-active, 
+  .custom-cursor-active a, 
+  .custom-cursor-active button,
+  .custom-cursor-active input,
+  .custom-cursor-active textarea,
+  .custom-cursor-active select {
+    cursor: none !important;
+  }
+}
+
+/* Grid overlay */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}

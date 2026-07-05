@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-stuti-mauve.vercel.app/sitemap.xml
