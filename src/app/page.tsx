@@ -9,6 +9,7 @@ import Projects from "@/components/Projects";
 import Certificates from "@/components/Certificates";
 import Experience from "@/components/Experience";
 import CodingProfiles from "@/components/CodingProfiles";
+import LiveCodingStats from "@/components/LiveCodingStats";
 import Achievements from "@/components/Achievements";
 import Contact from "@/components/Contact";
 import GalaxyBackground from "@/components/GalaxyBackground";
@@ -86,6 +87,15 @@ export default function Home() {
 
             {/* 7. Coding Profiles */}
             <CodingProfiles />
+
+            {/* ── Separator ── */}
+            <div className="relative w-full h-px overflow-visible">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+              <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-48 h-12 bg-cyan-600/10 blur-2xl rounded-full" />
+            </div>
+
+            {/* 7.5. Live Coding Metrics */}
+            <LiveCodingStats />
 
             {/* ── Separator ── */}
             <div className="relative w-full h-px overflow-visible">
